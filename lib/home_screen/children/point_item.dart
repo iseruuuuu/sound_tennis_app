@@ -15,16 +15,16 @@ class PointItem extends StatelessWidget {
     final mediaWidth = MediaQuery.of(context).size.width;
     final mediaHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Container(
-        width: mediaWidth / 9,
+        width: mediaWidth / 13,
         height: mediaHeight / 3,
         color: color,
         child: Center(
           child: Text(
             point,
             style: TextStyle(
-              fontSize: mediaWidth / 10,
+              fontSize: mediaWidth / 12,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),
