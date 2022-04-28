@@ -14,6 +14,11 @@ class HomeScreenController extends GetxController {
   //TODO マッチポイント
   var rightPoint = 0.obs;
   var leftPoint = 0.obs;
+
+  //TODO ゲームポイント
+  var rightGame = 0.obs;
+  var leftGame = 0.obs;
+
   final FlutterTts tts = FlutterTts();
 
   Future<void> speak() async {
@@ -21,36 +26,64 @@ class HomeScreenController extends GetxController {
   }
 
   Future<void> addScore(bool isScore) async {
-    //true -> 右　　　　false -> 左
     if (isScore) {
-      if (rightScore.value >= 10) {
-        addPoint(true);
-        rightScore.value = 0;
-      } else {
-        rightScore.value++;
+      switch (rightScore.value) {
+        case 0:
+          rightScore.value = 15;
+          break;
+        case 15:
+          rightScore.value = 30;
+          break;
+        case 30:
+          rightScore.value = 40;
+          break;
+        default:
+        //TODO デュースの処理を作成する。
       }
     } else {
-      if (leftScore.value >= 10) {
-        addPoint(false);
-        leftScore.value = 0;
-      } else {
-        leftScore.value++;
+      switch (leftScore.value) {
+        case 0:
+          leftScore.value = 15;
+          break;
+        case 15:
+          leftScore.value = 30;
+          break;
+        case 30:
+          leftScore.value = 40;
+          break;
+        default:
+        //TODO デュースの処理を作成する。
       }
     }
     speak();
   }
 
   Future<void> reduceScore(bool isScore) async {
-    //true -> 右　　　　false -> 左
     if (isScore) {
-      if (rightScore.value <= 0) {
-      } else {
-        rightScore.value--;
+      switch (rightScore.value) {
+        case 15:
+          rightScore.value = 0;
+          break;
+        case 30:
+          rightScore.value = 15;
+          break;
+        case 40:
+          rightScore.value = 30;
+          break;
+        default:
       }
     } else {
-      if (leftScore.value <= 0) {
-      } else {
-        leftScore.value--;
+      switch (leftScore.value) {
+        case 15:
+          leftScore.value = 0;
+          break;
+        case 30:
+          leftScore.value = 15;
+          break;
+        case 40:
+          leftScore.value = 30;
+          break;
+        default:
       }
     }
     speak();
@@ -58,25 +91,40 @@ class HomeScreenController extends GetxController {
 
   void addPoint(bool isScore) {
     if (isScore) {
-      leftPoint.value++;
-    } else {
       rightPoint.value++;
+    } else {
+      leftPoint.value++;
+    }
+  }
+
+  void addGame(bool isScore) {
+    if (isScore) {
+      rightGame.value++;
+    } else {
+      leftGame.value++;
     }
   }
 
   void courtChange() {
     var beforeLeftPoint = leftPoint.value;
     var beforeRightPoint = rightPoint.value;
+    var beforeRightGame = leftGame.value;
+    var beforeLeftGame = rightGame.value;
     rightPoint.value = beforeLeftPoint;
     leftPoint.value = beforeRightPoint;
+    rightGame.value = beforeLeftGame;
+    leftGame.value = beforeRightGame;
+
     tts.speak('court change');
   }
 
   void reset() {
     rightScore.value = 0;
-    leftScore.value = 0;
     rightPoint.value = 0;
+    rightGame.value = 0;
+    leftScore.value = 0;
     leftPoint.value = 0;
+    leftGame.value = 0;
     tts.stop();
   }
 }
