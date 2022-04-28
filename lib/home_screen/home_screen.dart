@@ -70,6 +70,18 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Obx(
+                        () => PointItem(
+                      point: '${controller.leftGame}',
+                      color: Colors.lightBlueAccent,
+                    ),
+                  ),
+                  Obx(
+                        () => PointItem(
+                      point: '${controller.rightGame}',
+                      color: Colors.lightBlueAccent,
+                    ),
+                  ),
+                  Obx(
                     () => PointItem(
                       point: '${controller.rightPoint}',
                       color: Colors.redAccent,
