@@ -1,17 +1,22 @@
 # sound_tennis_app
 
-A new Flutter project.
+## やることリスト
+- [ ] iPadでのサイズ確認をする。
+- [ ] デュースの処理
+- [ ] セット数の表示がうまくいっていない
+- [ ] アイコンの設定
+- [ ] アプリ名を変更する。
+- [ ] ゲームの追加
+- [ ] ポイントの追加の処理
 
-## Getting Started
+## やれたらいいなリスト
+- [ ] フリップの方向の調整
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# sound_tennis_app
+## 完了リスト
+- [x] splash画面を入れる
+- [x] 音声の調整を行う
+- [x] 得点をめくる感じにしたい
+- [x] 得点が入るようにした
+- [x] 音声が出るようにする。
+- [x] スコアをリセットする。
+ 
