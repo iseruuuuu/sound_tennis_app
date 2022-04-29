@@ -24,7 +24,8 @@ class HomeScreen extends StatelessWidget {
         children: [
           FlipCard(
             key: rightKey,
-            flipOnTouch: false,
+            flipOnTouch: true,
+            onFlip: () => controller.addScore(true),
             direction: FlipDirection.VERTICAL,
             front: Obx(
               () => FourSwipeDirection(
@@ -65,25 +66,25 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   Obx(
                     () => PointItem(
-                      point: '${controller.leftPoint}',
+                      point: '${controller.rightPoint}',
                       color: Colors.lightBlueAccent,
                     ),
                   ),
                   Obx(
-                        () => PointItem(
-                      point: '${controller.leftGame}',
-                      color: Colors.lightBlueAccent,
-                    ),
-                  ),
-                  Obx(
-                        () => PointItem(
+                    () => PointItem(
                       point: '${controller.rightGame}',
                       color: Colors.lightBlueAccent,
                     ),
                   ),
                   Obx(
                     () => PointItem(
-                      point: '${controller.rightPoint}',
+                      point: '${controller.leftGame}',
+                      color: Colors.redAccent,
+                    ),
+                  ),
+                  Obx(
+                    () => PointItem(
+                      point: '${controller.leftPoint}',
                       color: Colors.redAccent,
                     ),
                   ),
