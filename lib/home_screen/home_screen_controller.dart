@@ -38,7 +38,8 @@ class HomeScreenController extends GetxController {
           rightScore.value = 40;
           break;
         default:
-        //TODO デュースの処理を作成する。
+          //TODO デュースの処理を作成する。
+          addPoint(true);
       }
     } else {
       switch (leftScore.value) {
@@ -52,7 +53,9 @@ class HomeScreenController extends GetxController {
           leftScore.value = 40;
           break;
         default:
-        //TODO デュースの処理を作成する。
+          //TODO デュースの処理を作成する。
+          //  40-40の場合は例外で、「デュース」とコールします
+          addPoint(false);
       }
     }
     speak();
@@ -91,10 +94,22 @@ class HomeScreenController extends GetxController {
 
   void addPoint(bool isScore) {
     if (isScore) {
-      rightPoint.value++;
+      if (rightPoint.value >= 6) {
+        rightPoint.value = 0;
+        rightGame.value++;
+      } else {
+        rightPoint.value++;
+      }
     } else {
-      leftPoint.value++;
+      if (leftPoint.value >= 6) {
+        leftPoint.value = 0;
+        leftGame.value++;
+      } else {
+        leftPoint.value++;
+      }
     }
+    rightScore.value = 0;
+    leftScore.value = 0;
   }
 
   void addGame(bool isScore) {
