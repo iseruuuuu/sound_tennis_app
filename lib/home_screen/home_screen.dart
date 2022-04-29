@@ -24,13 +24,12 @@ class HomeScreen extends StatelessWidget {
         children: [
           FlipCard(
             key: rightKey,
-            flipOnTouch: true,
-            onFlip: () => controller.addScore(true),
+            flipOnTouch: false,
             direction: FlipDirection.VERTICAL,
             front: Obx(
               () => FourSwipeDirection(
                 swipeUp: () {
-                  controller.addScore(true);
+                  controller.checkDeuce(true);
                   rightKey.currentState?.toggleCard();
                 },
                 swipeDown: () {
@@ -38,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                   rightKey.currentState?.toggleCard();
                 },
                 child: ScoreItem(
-                  score: '${controller.rightScore}',
+                  score: '${controller.rightStringScore}',
                   color: Colors.lightBlueAccent,
                 ),
               ),
@@ -46,7 +45,7 @@ class HomeScreen extends StatelessWidget {
             back: Obx(
               () => FourSwipeDirection(
                 swipeUp: () {
-                  controller.addScore(true);
+                  controller.checkDeuce(true);
                   rightKey.currentState?.toggleCard();
                 },
                 swipeDown: () {
@@ -54,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                   rightKey.currentState?.toggleCard();
                 },
                 child: ScoreItem(
-                  score: '${controller.rightScore}',
+                  score: '${controller.rightStringScore}',
                   color: Colors.lightBlueAccent,
                 ),
               ),
@@ -120,7 +119,7 @@ class HomeScreen extends StatelessWidget {
             front: Obx(
               () => FourSwipeDirection(
                 swipeUp: () {
-                  controller.addScore(false);
+                  controller.checkDeuce(false);
                   leftKey.currentState?.toggleCard();
                 },
                 swipeDown: () {
@@ -128,7 +127,7 @@ class HomeScreen extends StatelessWidget {
                   leftKey.currentState?.toggleCard();
                 },
                 child: ScoreItem(
-                  score: "${controller.leftScore}",
+                  score: '${controller.leftStringScore}',
                   color: Colors.redAccent,
                 ),
               ),
@@ -136,7 +135,7 @@ class HomeScreen extends StatelessWidget {
             back: Obx(
               () => FourSwipeDirection(
                 swipeUp: () {
-                  controller.addScore(false);
+                  controller.checkDeuce(false);
                   leftKey.currentState?.toggleCard();
                 },
                 swipeDown: () {
@@ -144,7 +143,7 @@ class HomeScreen extends StatelessWidget {
                   leftKey.currentState?.toggleCard();
                 },
                 child: ScoreItem(
-                  score: "${controller.leftScore}",
+                  score: '${controller.leftStringScore}',
                   color: Colors.redAccent,
                 ),
               ),
